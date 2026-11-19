@@ -425,3 +425,11 @@ AE2 的 AE 单位是 `double`，与 FE 的换算为 1 AE = 2 FE。
 - `register_model_loaders` / `bake_model_loader`
 - `RecipeSerializer`
 - 各 capability provider
+
+## 附：本地核实（2026-11-19，horizon main @2613d3b5）
+
+在本地运行 `cargo run -p xtask -- mod-api coverage`。输出表只列出 wasm 可用的条目（已排除 "Not on wasm" 和未绑定的条目），共 2224 条，状态都是 `crosses`。
+
+- `Hooks::component_types` 出现在表中，说明 **wasm mod 可以注册自定义数据组件**。第 5 项的待核实点就此解除，不需要再向上游提 `component_types registration for wasm mods`。
+- 以下 M1 用到的 API 也都在表中：`block_entity_submit`、`open_mod_menu`、`server_tick`、`screen_render_post`、`neighbor_changed`、`register_game_tests`、recipe serializer、energy 相关条目。
+- biome modifier 和结构没有以 Host 或 Hooks 方法的形式出现在表中。它们可能通过 `register` 阶段的 Registrar 声明，这一点在世界生成 issue 中实测确认。
