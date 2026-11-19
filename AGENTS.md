@@ -1,5 +1,10 @@
 # Applied-Energistics-Horizon
 
+把 AE2 移植为 Horizon（Rust 版 Minecraft Java 26.3）mod。开工前先读 `GLOSSARY.md` 与 `docs/adr/`。
+
+- 移植基线：`upstream/ae2`（git submodule，锁定 `v26.3.2-alpha`），克隆后运行 `git submodule update --init` 获取。
+- M1 的 API 可行性调研：`docs/research/m1-api-feasibility.md`。
+
 ## Agent skills
 
 ### Issue tracker

@@ -1,0 +1,4 @@
+[submodule "upstream/ae2"]
+	path = upstream/ae2
+	url = https://github.com/AppliedEnergistics/Applied-Energistics-2.git
+	shallow = true
